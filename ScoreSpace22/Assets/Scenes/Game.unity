@@ -1962,8 +1962,8 @@ MonoBehaviour:
   - {fileID: 1761419252}
   - {fileID: 411532894}
   - {fileID: 476796924}
-  loopTime: 1
-  step: 0.2
+  loopTime: 10
+  step: 1
   maxHealth: 3
   score: {fileID: 886256650}
   health: {fileID: 1149928445}

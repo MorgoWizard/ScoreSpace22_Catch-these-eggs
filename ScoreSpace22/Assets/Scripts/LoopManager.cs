@@ -22,6 +22,8 @@ public class LoopManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        _timer += Time.fixedDeltaTime;
+        
         SpeedUp();
         HealthCheck();
     }
@@ -43,13 +45,12 @@ public class LoopManager : MonoBehaviour
 
     private void SpeedUp()
     {
-        _timer += Time.fixedDeltaTime;
-
         if (_timer >= loopTime)
         {
+            if(loopTime > 1f) loopTime -= step;
+            if(loopTime <= 1f && loopTime > 0.7f) loopTime -= step * 0.1f;
             var temp = spawners[Random.Range(0, spawners.Length - 1)];
-            if (temp.GetComponent<SpawnObjects>().respawnTime >= 2f)
-                temp.GetComponent<SpawnObjects>().respawnTime -= step;
+            temp.gameObject.GetComponent<SpawnObjects>().RandomSpawn();
             _timer = 0;
         }
     }
